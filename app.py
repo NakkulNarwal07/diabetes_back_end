@@ -62,6 +62,3 @@ def predict_pima():
 @app.route("/health", methods=["GET"])
 def health():
     return jsonify({"status": "ok"})
-
-if __name__ == "__main__":
-    print('Server up and running')
