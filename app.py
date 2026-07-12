@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 CORS(app, origins=[
     "http://localhost:3000",
-    "https://diabetes-front-end.vercel.app/",
+    "https://diabetes-front-end.vercel.app",
 ], allow_headers=["Content-Type", "x-api-key", "model"])
 
 model= joblib.load('models/diabetes_svm_pipeline_raw.joblib')
@@ -69,5 +69,7 @@ def health():
     return jsonify({"status": "ok"})
 
 
-
-
+#
+#
+# if __name__ == "__main__":
+#     app.run(host="0.0.0.0", port=5000, debug=True)
