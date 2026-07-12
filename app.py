@@ -6,8 +6,11 @@ import traceback
 
 
 app = Flask(__name__)
-CORS(app, origins=["https://diabetes-front-end.vercel.app/"])
 
+CORS(app, origins=[
+    "http://localhost:3000",
+    "https://diabetes-front-end.vercel.app/",
+], allow_headers=["Content-Type", "x-api-key", "model"])
 
 model= joblib.load('models/diabetes_svm_pipeline_raw.joblib')
 model_pima = joblib.load('models/PIMA_diabetes_model.joblib')
@@ -57,12 +60,14 @@ def predict_pima():
 
     except Exception as e:
 
-        traceback.print_exc()  # full stack trace in your terminal
+        traceback.print_exc()
 
         return jsonify({"error": str(e)}), 400
 
 @app.route("/health", methods=["GET"])
 def health():
     return jsonify({"status": "ok"})
+
+
 
 
