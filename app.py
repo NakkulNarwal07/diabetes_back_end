@@ -6,7 +6,9 @@ import traceback
 
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://diabetes-front-end.vercel.app/"])
+
+
 model= joblib.load('models/diabetes_svm_pipeline_raw.joblib')
 model_pima = joblib.load('models/PIMA_diabetes_model.joblib')
 THRESHOLD = 0.40
