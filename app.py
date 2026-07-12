@@ -62,3 +62,5 @@ def predict_pima():
 @app.route("/health", methods=["GET"])
 def health():
     return jsonify({"status": "ok"})
+
+
